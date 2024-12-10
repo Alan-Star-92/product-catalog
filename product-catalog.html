@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Catalog</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+
+        .tree-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        ul {
+            list-style-type: none;
+            padding-left: 20px;
+        }
+
+        li {
+            margin: 8px 0;
+            cursor: pointer;
+        }
+
+        .nested {
+            display: none;
+        }
+
+        .active {
+            display: block;
+        }
+
+        .caret::before {
+            content: "\25B6";
+            color: #666;
+            display: inline-block;
+            margin-right: 8px;
+            transition: transform 0.2s;
+        }
+
+        .caret-down::before {
+            transform: rotate(90deg);
+        }
+
+        .product-item {
+            color: #444;
+            transition: color 0.2s;
+        }
+
+        .product-item:hover {
+            color: #0066cc;
+        }
+    </style>
+</head>
+<body>
+
+<div class="tree-container">
+    <h1>Product Catalog</h1>
+    <ul id="myUL">
+        <li><span class="caret">Electronics</span>
+            <ul class="nested">
+                <li><span class="product-item">Smartphones</span></li>
+                <li><span class="product-item">Laptops</span></li>
+                <li><span class="product-item">Tablets</span></li>
+                <li><span class="caret">Accessories</span>
+                    <ul class="nested">
+                        <li><span class="product-item">Phone Cases</span></li>
+                        <li><span class="product-item">Chargers</span></li>
+                        <li><span class="product-item">Screen Protectors</span></li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li><span class="caret">Home Appliances</span>
+            <ul class="nested">
+                <li><span class="product-item">Refrigerators</span></li>
+                <li><span class="product-item">Washing Machines</span></li>
+                <li><span class="product-item">Microwave Ovens</span></li>
+                <li><span class="product-item">Air Conditioners</span></li>
+            </ul>
+        </li>
+        <li><span class="caret">Furniture</span>
+            <ul class="nested">
+                <li><span class="product-item">Living Room</span>
+                    <ul class="nested">
+                        <li><span class="product-item">Sofas</span></li>
+                        <li><span class="product-item">Coffee Tables</span></li>
+                        <li><span class="product-item">TV Stands</span></li>
+                    </ul>
+                </li>
+                <li><span class="product-item">Bedroom</span>
+                    <ul class="nested">
+                        <li><span class="product-item">Beds</span></li>
+                        <li><span class="product-item">Wardrobes</span></li>
+                        <li><span class="product-item">Nightstands</span></li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>
+
+<script>
+    var toggler = document.getElementsByClassName("caret");
+    for (var i = 0; i < toggler.length; i++) {
+        toggler[i].addEventListener("click", function() {
+            this.parentElement.querySelector(".nested").classList.toggle("active");
+            this.classList.toggle("caret-down");
+        });
+    }
+</script>
+
+</body>
+</html> 
